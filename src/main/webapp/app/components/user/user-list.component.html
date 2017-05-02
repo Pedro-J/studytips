@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <p *ngIf="mensagem.length" class="alert alert-info">{{mensagem}}</p>
+
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+            <tr>
+                <th>#</th>
+                <th>Login</th>
+                <th>Profile</th>
+                <th [isAuthorized]="'ROLE_ADMIN'">Authorities</th>
+                <th>Ações</th>
+            </tr>
+            <tr *ngFor='let user of users'>
+                <td>{{user.id}}</td>
+                <td><a href="" (click)="onSelectUser($event,user.id)">{{user.login}}</a></td>
+                <td>{{user.profile}}</td>
+                <td [isAuthorized]="'ROLE_ADMIN'">{{user.authorities.join(',')}}</td>
+                <td>
+
+                    <img (click)="onDetailUser($event,user.id)" src="../../assets/img/detail_2.png"
+                         style="width: 32px;height: 32px;cursor: pointer;"/>
+
+                    <img (click)="onEditUser($event,user.id)" src="../../assets/img/edit.png"
+                         style="width: 32px;height: 32px;cursor: pointer;"/>
+
+                    <img-button [directoryValue]="'../../assets/img/delete.png'" [confirmation]="true"
+                               [styleValue]="img" (eventAction)="onDeleteUser(user)" [tipValue]="'deletar user'"></img-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage"
+                    (pageChanged)="pageChanged($event)" [itemsPerPage]="itemsPerPage" class="pagination-sm"
+                    previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+        <button class="btn-primary btn" (click)="onAddUser($event)" >ADD NEW</button>
+    </div>
+</div>
