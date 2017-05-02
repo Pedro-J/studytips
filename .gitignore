@@ -4,3 +4,6 @@ target/
 *.iml
 /src/main/webapp/app/**/*.js
 src/main/webapp/**/*.js.map
+/.project
+/.classpath
+/.settings
