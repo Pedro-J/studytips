@@ -20,7 +20,7 @@ public class Tip extends GenericEntity{
     private String title;
 
     @Lob
-    private String description;
+    private String text;
 
     @ManyToOne
     private Area area;
@@ -43,12 +43,12 @@ public class Tip extends GenericEntity{
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Area getArea() {

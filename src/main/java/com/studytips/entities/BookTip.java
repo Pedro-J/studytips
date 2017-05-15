@@ -17,7 +17,7 @@ public class BookTip extends GenericEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String description;
+    private String text;
 
     private String title;
 
@@ -29,7 +29,10 @@ public class BookTip extends GenericEntity{
     private TipLevel tipLevel;
 
     @ManyToOne
-    private Tip subjectTip;
+    private Tip tip;
+
+    @ManyToOne
+    private User user;
 
     @Override
     public Integer getId() {
@@ -41,12 +44,12 @@ public class BookTip extends GenericEntity{
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getTitle() {
@@ -81,11 +84,19 @@ public class BookTip extends GenericEntity{
         this.tipLevel = tipLevel;
     }
 
-    public Tip getSubjectTip() {
-        return subjectTip;
+    public Tip getTip() {
+        return tip;
     }
 
-    public void setSubjectTip(Tip subjectTip) {
-        this.subjectTip = subjectTip;
+    public void setTip(Tip tip) {
+        this.tip = tip;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

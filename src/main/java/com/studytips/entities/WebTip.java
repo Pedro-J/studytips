@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.studytips.enums.TipLevel;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by comp-dev on 4/13/17.
@@ -22,7 +23,8 @@ public class WebTip extends GenericEntity{
     @Enumerated(EnumType.ORDINAL)
     private TipLevel tipLevel;
 
-//    private List<String> links;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Link> links;
 
     @ManyToOne
     private User user;
@@ -70,5 +72,13 @@ public class WebTip extends GenericEntity{
 
     public void setTip(Tip tip) {
         this.tip = tip;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
     }
 }

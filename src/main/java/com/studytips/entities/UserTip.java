@@ -18,7 +18,8 @@ public class UserTip extends GenericEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String description;
+    @Lob
+    private String text;
 
     @Enumerated(EnumType.ORDINAL)
     private TipLevel tipLevel;
@@ -31,20 +32,12 @@ public class UserTip extends GenericEntity{
 
     @Override
     public Integer getId() {
-        return null;
+        return id;
     }
 
     @Override
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public TipLevel getTipLevel() {
@@ -69,5 +62,13 @@ public class UserTip extends GenericEntity{
 
     public void setTip(Tip tip) {
         this.tip = tip;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
