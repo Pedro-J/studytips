@@ -26,10 +26,8 @@ HMAC Filter with Spring Security by Michael DESIGAUD (https://github.com/RedFrog
 2 - See the file "application.properties" in "src/main/resources" and setup your databases properties, 
 it must be created a schema with the same name as the one in "spring.datasource.url".
 
-3 - To create the tables and colunms set the "spring.jpa.hibernate.ddl-auto" from update to create, and then 
-start the application through the file "StudyTipsApplication" in the package "com.studytips". 
+3 - To create the tables and colunms start the application through the file "StudyTipsApplication" in the package "com.studytips". 
 The hibernate must setup your database correctly, if the application starts without errors. 
-To finish this part return "spring.jpa.hibernate.ddl-auto" to update.
 
 4 - Execute the file "src/main/resources/import_start.sql" in your SGBD;
 
