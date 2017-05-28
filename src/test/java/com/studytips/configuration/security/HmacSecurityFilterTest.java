@@ -52,7 +52,7 @@ public class HmacSecurityFilterTest {
 
     private String isoDate;
 
-    private String url = "http://localhost/api/users";
+    private String url = "http://localhost/studytips/users";
 
     @Before
     public void setUp() throws HmacException, IOException {

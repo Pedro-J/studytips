@@ -6,7 +6,7 @@
                 <input type="text" formControlName="login" name="login" id="email" required [(ngModel)]="user.login"
                         class="form-control" [readonly]="modoDetail">
 
-                <span *ngIf="!modoDetail && userForm.controls.login.invalid" >
+                <span *ngIf="userForm.controls.login.invalid" >
                     <span *ngIf="userForm.controls.login.errors.incorrectMailFormat" class="form-control alert-danger">
                         E-mail Inválido
                     </span>
@@ -15,12 +15,12 @@
                     </span>
                 </span>
             </div>
-            <div *ngIf="!modoEdicao && !modoDetail" class="form-group">
+            <div class="form-group">
                 <label for="password">Senha:</label>
                 <input type="text" id="password" [(ngModel)]="user.password"
                        formControlName="password" class="form-control">
             </div>
-            <div *ngIf="!modoEdicao && !modoDetail" class="form-group">
+            <div class="form-group">
                 <label for="confirmPassword">Confirmação de Senha:</label>
                 <input type="text" id="confirmPassword" [(ngModel)]="passwordConfirm"
                        formControlName="confirmPassword" class="form-control" >
@@ -28,26 +28,19 @@
             <div class="form-group">
                 <label for="firstname">Nome:</label>
                 <input type="text" id="firstname" [(ngModel)]="user.firstName"
-                       formControlName="firstName" class="form-control" [readonly]="modoDetail">
+                       [ngModelOptions]="{standalone: true}" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="lastname">Sobrenome:</label>
                 <input type="text" id="lastname" [(ngModel)]="user.lastName"
-                       formControlName="lastName" class="form-control" [readonly]="modoDetail">
+                       [ngModelOptions]="{standalone: true}" class="form-control" >
             </div>
             <div class="form-group">
                 <label for="birthDate">Data de Nascimento:</label>
                 <input type="text" id="birthDate" [(ngModel)]="user.birthDate"
-                       formControlName="birthDate" class="form-control" [readonly]="modoDetail">
+                       [ngModelOptions]="{standalone: true}" class="form-control" >
             </div>
 
-            <div class="form-group">
-                <label for="profile">Profile</label>
-                <select id="profile" id="profile" [(ngModel)]="user.profile"
-                        formControlName="profile" class="form-control">
-                    <option *ngFor="let profile of profiles" [value]="profile">{{profile}}</option>
-                </select>
-            </div>
             <div>
                 <confirm-button
                         nome="Salvar"

@@ -5,8 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * Login DTO
  *
- *  @author Michael DESIGAUD on 14/02/2016.
- *  @see @link https://github.com/RedFroggy/angular-spring-hmac/tree/angular2
  */
 public class LoginDTO {
 
@@ -15,6 +13,15 @@ public class LoginDTO {
 
     @NotEmpty
     private String password;
+
+    public LoginDTO(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    public LoginDTO(){
+
+    }
 
     public String getLogin() {
         return login;

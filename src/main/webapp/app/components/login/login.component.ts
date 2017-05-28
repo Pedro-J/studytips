@@ -8,6 +8,7 @@ import {AccountEventsService} from '../../services/account.events.service';
 @Component({
     selector:'login',
     templateUrl: './app/components/login/login.component.html',
+    styleUrls:['./app/components/login/login.component.css']
 })
 export class LoginComponent {
     username:string;
@@ -47,5 +48,10 @@ export class LoginComponent {
             console.log('Successfully logged', account);
             this.router.navigate(['/home']);
         });
+    }
+
+    public onAddUser(event:Event){
+        event.preventDefault();
+        this.router.navigate(['/register']);
     }
 }

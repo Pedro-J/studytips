@@ -26,7 +26,8 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public UserDTO authenticate(@RequestBody LoginDTO loginDTO, HttpServletResponse response) throws Exception{
-        return authenticationService.authenticate(loginDTO, response);
+        UserDTO userDTO = authenticationService.authenticate(loginDTO, response);
+        return userDTO;
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

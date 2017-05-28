@@ -10,8 +10,6 @@ import java.util.List;
 /**
  * User DTO
  *
- *  @author Michael DESIGAUD on 14/02/2016.
- *  @see @link https://github.com/RedFroggy/angular-spring-hmac/tree/angular2
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {

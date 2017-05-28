@@ -3,7 +3,7 @@ package com.studytips.configuration.security.hmac;
 /**
  * Security utility class
  *
- *  @author  Michael DESIGAUD on 15/02/2016.
+ *  @author Michael DESIGAUD on 15/02/2016.
  *  @see @link https://github.com/RedFroggy/angular-spring-hmac/tree/angular2
  *
  */

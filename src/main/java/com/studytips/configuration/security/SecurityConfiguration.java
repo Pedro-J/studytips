@@ -20,12 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Security configuration
+ * Spring Security configuration
  *
- *  @author created by Michael DESIGAUD on 14/02/2016.
- *  @author modified by comp-dev
- *
- *  @see @link https://github.com/RedFroggy/angular-spring-hmac/tree/angular2
  */
 @Configuration
 @EnableWebSecurity
@@ -43,23 +39,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-                .antMatchers("/scripts/**/*.{js}")
-                .antMatchers("/node_modules/**")
-                .antMatchers("/assets/**")
-                .antMatchers("*.{ico}")
-                .antMatchers("/views/**/*.{html}")
-                .antMatchers("/app/**/*.{html}");
+//        web.ignoring()
+//                .antMatchers("/scripts/**/*.{js}")
+//                .antMatchers("/node_modules/**")
+//                .antMatchers("/assets/**")
+//                .antMatchers("*.{ico}")
+//                .antMatchers("/views/**/*.{html}")
+//                .antMatchers("/app/**/*.{html}");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/studytips/authenticate").anonymous()
+                .antMatchers("/studytips/user/add").permitAll()
+ /*                   .antMatchers("/studytips/authenticate").anonymous()
+
                     .antMatchers("/").anonymous()
                     .antMatchers("/favicon.ico").anonymous()
-                    .antMatchers("/studytips/**").authenticated()
+                    .antMatchers("/studytips*//**").authenticated()*/
                 .and()
                 .csrf()
                     .disable()

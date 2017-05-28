@@ -7,7 +7,7 @@ import com.studytips.dto.LoginDTO;
 import com.studytips.dto.UserDTO;
 import com.studytips.entities.User;
 import com.studytips.enums.UserProfile;
-import com.studytips.repositories.UserRepository;
+import com.studytips.services.UserService;
 import com.studytips.services.impl.AuthenticationService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,7 +26,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -49,10 +48,7 @@ public class AuthenticationServiceTest {
     private AuthenticationManager authenticationManager;
 
     @Mock
-    private UserDetailsService userDetailsService;
-
-    @Mock
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Mock
     private HttpServletResponse httpResponse;
@@ -79,11 +75,11 @@ public class AuthenticationServiceTest {
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginDTO.getLogin(),loginDTO.getPassword());
 
-        PowerMockito.when(userDetailsService.loadUserByUsername(loginDTO.getLogin())).thenReturn(securityUser);
+        PowerMockito.when(userService.loadUserByUsername(loginDTO.getLogin())).thenReturn(securityUser);
         PowerMockito.when(authenticationManager.authenticate(Mockito.any(UsernamePasswordAuthenticationToken.class))).thenReturn(token);
         User user = new User(MockUsers.findById(securityUser.getId()));
-        PowerMockito.when(userRepository.findOne(Mockito.anyInt())).thenReturn(user);
-        PowerMockito.when(userRepository.saveAndFlush(user)).thenReturn(null);
+        PowerMockito.when(userService.findById(Mockito.anyInt())).thenReturn(user);
+        PowerMockito.when(userService.save(user)).thenReturn(null);
 
         UserDTO userDTO = authenticationService.authenticate(loginDTO, httpResponse);
         Assert.assertNotNull(userDTO);
@@ -91,9 +87,14 @@ public class AuthenticationServiceTest {
         Assert.assertNotNull(userDTO.getAuthorities());
         Assert.assertTrue(!userDTO.getAuthorities().isEmpty());
 
-        Mockito.verify(authenticationManager,Mockito.times(1)).authenticate(Mockito.any(UsernamePasswordAuthenticationToken.class));
-        Mockito.verify(userDetailsService,Mockito.times(1)).loadUserByUsername(loginDTO.getLogin());
-        Mockito.verify(httpResponse,Mockito.times(3)).setHeader(Mockito.anyString(),Mockito.anyString());
+        Mockito.verify(authenticationManager, Mockito.times(1))
+                .authenticate(Mockito.any(UsernamePasswordAuthenticationToken.class));
+
+        Mockito.verify(userService, Mockito.times(1))
+                .loadUserByUsername(loginDTO.getLogin());
+
+        Mockito.verify(httpResponse, Mockito.times(3))
+                .setHeader(Mockito.anyString(),Mockito.anyString());
     }
 
     @Test
@@ -133,7 +134,7 @@ public class AuthenticationServiceTest {
         loginDTO.setPassword("frog");
 
         SecurityUser securityUser = getSecurityUser(loginDTO.getLogin(),loginDTO.getPassword());
-        PowerMockito.when(userDetailsService.loadUserByUsername(loginDTO.getLogin())).thenReturn(securityUser);
+        PowerMockito.when(userService.loadUserByUsername(loginDTO.getLogin())).thenReturn(securityUser);
 
         authenticationService.tokenAuthentication(loginDTO.getLogin());
         Assert.assertNotNull(SecurityContextHolder.getContext());

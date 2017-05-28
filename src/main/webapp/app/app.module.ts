@@ -23,6 +23,7 @@ import { UserListComponent } from './components/user/user-list.component';
 import { ConfirmButtonComponent } from './components/confirm-button/confirm-button.component';
 import { ImgButtonComponent } from './components/img-button/img-button.component';
 import { HomeComponent } from "./components/home/home.component";
+import { RegistrationComponent } from "./components/registration/registration.component";
 
 //Services
 import { AccountEventsService } from './services/account.events.service';
@@ -50,7 +51,8 @@ import { UserService } from './services/user.service';
         UserFormComponent,
         UserListComponent,
         ConfirmButtonComponent,
-        ImgButtonComponent
+        ImgButtonComponent,
+        RegistrationComponent
     ],
 
     providers: [

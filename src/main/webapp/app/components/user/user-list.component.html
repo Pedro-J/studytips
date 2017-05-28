@@ -14,7 +14,7 @@
             </tr>
             <tr *ngFor='let user of users'>
                 <td>{{user.id}}</td>
-                <td><a href="" (click)="onSelectUser($event,user.id)">{{user.login}}</a></td>
+                <td>{{user.login}}</td>
                 <td>{{user.profile}}</td>
                 <td [isAuthorized]="'ROLE_ADMIN'">{{user.authorities.join(',')}}</td>
                 <td>
@@ -35,5 +35,6 @@
                     (pageChanged)="pageChanged($event)" [itemsPerPage]="itemsPerPage" class="pagination-sm"
                     previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
         <button class="btn-primary btn" (click)="onAddUser($event)" >ADD NEW</button>
+        <a href="#/user/add">novo</a>
     </div>
 </div>

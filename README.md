@@ -11,8 +11,7 @@
 - JAVA 8
 
 #Features
-- Token based authentication, Json Web Token, HMAC implementation and 
-HMAC Filter with Spring Security by Michael DESIGAUD (https://github.com/RedFroggy/angular-spring-hmac/tree/angular2)
+- Authentication security based on (https://github.com/RedFroggy/angular-spring-hmac/tree/angular2)
 - Users views, business and model;
 - Areas views, business and model;
 - Tips views, business and model;
@@ -40,13 +39,5 @@ The hibernate must setup your database correctly, if the application starts with
 	* You can login as user through login:user and password:user
 	
 
-#To run Java unit tests
-````bash
-$ mvn test
-````
 
-#To run the application
-````bash
-$ mvn spring-boot:run
-````
 

@@ -24,6 +24,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @RunWith(MockitoJUnitRunner.class)
 public class HmacUserDetailServiceTest {
 
+
     @InjectMocks
     private UserServiceImpl userService;
 

@@ -91,7 +91,7 @@ export class UserFormComponent {
         this.userForm = this.formBuilder.group({
             login: this.mailAddress,
             password: ['', Validators.compose([Validators.required,Validators.minLength(5)])],
-            passwordConfirm: ['', Validators.compose([Validators.required,Validators.minLength(5)]) ],
+            confirmPassword: ['', Validators.compose([Validators.required,Validators.minLength(5)]) ],
             profile: ['', Validators.required],
             birthDate: ['', Validators.required],
             firstName:['', Validators.required],
